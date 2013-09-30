@@ -82,15 +82,19 @@ window.addEventListener("DOMContentLoaded", function () {
     // not saving to localstorage.
     // submitting my work to find out why later on the next project
     function storeData(key){
+        var alertMessage;
         if(!key){
             var id = Math.floor(Math.random()*100000001);
+            alertMessage = "Item Added";
         }else{
             id=key;
+            alertMessage = "Item Edited";
         }
         
         // get form values // store in objet
         getSelectedRadio();
         // object properties contain array with the form label and input values
+        console.log ($('location').value);
         var item = {
             "location"           : ["Location:", $('location').value],
             "productBrand"       : ["Brand:", $('productBrand').value],
@@ -104,9 +108,11 @@ window.addEventListener("DOMContentLoaded", function () {
         };
             //item.store              = ["Store:", $('productBrand').value];
             //item.sizeType           = ["Size Type:", $('sizeType').value];
-            localStorage.setItem(id, JSON.stringify(item));
-            alert("Item Added");
+            var info=JSON.stringify(item);
+            localStorage.setItem(id, info);
+            alert(alertMessage);
             //window.location.reload();
+            getData();
     };
     
     function getData(){
@@ -268,12 +274,12 @@ window.addEventListener("DOMContentLoaded", function () {
             getPrice.style.border = "1px dashed red";
             errorMessages.push(getPriceError);
         }
-        */
         if(getSizeTypes.value === "--Select A Size Type--"){
             var sizeTypeError = "Please select a size";
             getSizeTypes.style.border = "1px dashed red";
             errorMessages.push(sizeTypeError);
         }
+        */
         
         if(errorMessages.length > 0){
             for(var i=0,j=errorMessages.length; i<j;i++){
