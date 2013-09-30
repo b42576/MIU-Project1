@@ -1,6 +1,6 @@
 /* 
  * Kevin Fry
- * Full Sail - VFW1309 Project 4
+ * Full Sail - MIU Project 1
  * Pricebook
  */
 
